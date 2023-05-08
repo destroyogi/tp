@@ -1,0 +1,11 @@
+flask
+pyodbc==4.0.35
+jinja2
+Flask-WTF
+WTForms
+Flask-Bootstrap
+Flask-Datepicker
+gevent
+pytest
+nose2
+pylint

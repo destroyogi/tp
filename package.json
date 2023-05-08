@@ -1,0 +1,14 @@
+{
+  "name": "tp1",
+  "version": "0.1.0",
+  "description": "TP1",
+  "main": "index.js",
+  "scripts": {
+    "htmlhint": "htmlhint",
+    "csslint": "csslint"
+  },
+  "dependencies": {
+    "htmlhint": "^0.15.0",
+    "csslint": "^1.0.5"
+  }
+}

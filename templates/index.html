@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome To Login Form</title>
+  <meta http-equiv="refresh" content="800">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <!-- Main div code -->
+    <div id="main">
+    <div class="h-tag">
+    <h2>Welcome</h2>
+    <table cellspacing="2" align="center" cellpadding="8" border="0">
+    </table>    
+    </div>
+    <!-- Login box -->
+    <div class="Login">
+    <table cellspacing="2" align="center" cellpadding="8" border="0">
+    <tr>
+    <form id="search-form" method="POST" action="/">
+        <label for="numPairs">Number of Dropdown Pairs:</label>
+        <input type="number" id="numPairs" name="numPairs" value="1" min="1">
+        <br><br>
+        <div id="dropdownPairs"></div>
+        <input type="submit" value="Search">
+    </form>
+    </tr>
+    </table>
+    </div>
+    </div>
+    <script>
+        function updateDropdownPairs() {
+            var numPairs = $("#numPairs").val();
+            var dropdownPairs = $("#dropdownPairs");
+            dropdownPairs.empty();
+            for (var i = 0; i < numPairs; i++) {
+                dropdownPairs.append('<div class="dropdownPair">\
+                <label for="dropdown1-' + i + '">Select Customer:</label>\
+                <select id="dropdown1-' + i + '" name="dropdown1-' + i + '">\
+                    {% for option in options1 %}\
+                        <option value="{{ option }}">{{ option }}</option>\
+                    {% endfor %}\
+                </select>\
+                <label for="dropdown2-' + i + '">Select Environment:</label>\
+                <select id="dropdown2-' + i + '" name="dropdown2-' + i + '">\
+                    {% for option in options2 %}\
+                        <option value="{{ option }}">{{ option }}</option>\
+                    {% endfor %}\
+                </select><br><br></div>');
+            }
+        }
+
+        $(document).ready(function() {
+            updateDropdownPairs();
+
+            $("#numPairs").change(function() {
+                updateDropdownPairs();
+            });
+
+            $(document).on('change', 'select[id^="dropdown1"]', function() {
+                var customer = $(this).val();
+                var dropdownIndex = $(this).attr('id').split('-')[1];
+                $.ajax({
+                    url: "/get_options",
+                    type: "POST",
+                    data: {"dropdown1": customer},
+                    success: function(response) {
+                        var options2 = response.options;
+                        var dropdown2 = $("#dropdown2-" + dropdownIndex);
+                        dropdown2.empty();
+                        $.each(options2, function(index, value) {
+                            dropdown2.append("<option value='" + value + "'>" + value + "</option>");
+                        });
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* Centering the dropdowns */
+.dropdown-container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+/* Set font and line spacing */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+  /* adjust width to account for padding */
+  width: calc(180px - 20px);
+}
+
+/* Add space before the submit button */
+form {
+  margin-bottom: 30px;
+}
+
+/* Style the first dropdown */
+#dropdown1 {
+  background-color: white;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  color: #0e0000;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+}
+
+/* Style the second dropdown */
+#dropdown2 {
+  background-color: white;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  color: #0e0000;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+}
+
+/* Default font size and color */
+body {
+  color: #898665;
+}
+
+/* Header */
+header {
+  background-color: #FF5722;
+  color: #fff;
+  padding: 100px;
+}
+
+/* Page title */
+h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+/* Navigation bar */
+nav {
+  background-color: #555;
+  color: #fff;
+  margin-bottom: 100px;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav li a {
+  color: #fff;
+  padding: 50px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+/* Main content area */
+main {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* Table styles */
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+th, td {
+  border-bottom: 2px solid #0a0301;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #7C459C;
+  color: #f7fdf9;
+}
+
+tr:nth-child(even) {
+  background-color: #e42383;
+  border-bottom: 1px
+}
+
+/* Boolean column checkboxes */
+.checkbox-label {
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 12px;
+  padding-left: 35px;
+  position: relative;
+  user-select: none;
+}
+
+.checkbox-label input {
+  cursor: pointer;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+}
+
+.checkbox-checkmark {
+  background-color: #f0174d;
+  border-radius: 3px;
+  height: 25px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 25px;
+}
+
+.checkbox-label:hover input ~ .checkbox-checkmark {
+  background-color: #f0eaea;
+}
+
+.checkbox-label input:checked ~ .checkbox-checkmark {
+  background-color: #2196F3;
+}
+
+.checkbox-checkmark:after {
+  content: "";
+  display: none;
+  position: absolute;
+}
+
+.checkbox-label input:checked ~ .checkbox-checkmark:after {
+  display: block;
+}
+
+.checkbox-label .checkbox-checkmark:after {
+  border-color: #fdfcfc transparent transparent #fdfcfc;
+  border-width: 0 3px 3px 0;
+  content: "";
+  display: block;
+  height: 0;
+  left: 9px;
+  position: absolute;
+  top: 5px;
+  transform: rotate(45deg);
+  width: 5px;
+}
+
+body {
+  background-color: #C997C6;
+  color: #0f4a71;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px;
+  }
+#main
+{
+   border-bottom: 3px double #f1f1f1;
+   border-radius: 5px;
+   border-top: 3px double #f8f7f8;
+   margin: 100px auto 0;
+   max-width: 700px;
+   padding: 20px 10px 0;
+  }  
+#main table
+{
+  font-family:"Comic Sans MS", cursive;
+} 
+/* css code for textbox */
+#main .tb
+{
+  border: 1px solid #27a465;
+  border-left: 5px solid #f7f7f7;
+  color: #27a465;
+  font-weight: bold;
+  opacity: 0.9;
+  padding: 10px 15px;
+  width: calc(240px - 16px); /* adjust width to account for border and padding */
+}
+
+
+/* css code for button*/
+#main .btn
+{
+  border: 1px solid #27a465;
+  border-radius: 2px;
+  color: #27a465;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 42px;
+  transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+  /* adjust width to account for border */
+  width: calc(88px - 2px - 2px); /* 2px for each side of the border */
+}
+
+#main .btn:hover
+{
+  background-color:#27a465;
+  border:1px solid #f8f7f7;
+  border-radius: 2px;
+  color:#f1f1f1;
+  }
+
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+label {
+  display: inline-block;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  text-align: left;
+  width: 300px;
+}
+
+/* Style for the dropdowns */
+select {
+  display: inline-block;
+  text-align: left;
+  width: 350px;
+}
+
+/* Style for the submit button container */
+.submit-container {
+  text-align: center;
+
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+  font-size: 20px;
+  margin-top: 60px;
+  text-align: center;
+  width: 200px;
+
+  
+  /* Your button styles here */
+}
+.non-boolean-columns {
+  border: 2px solid #000; /* add a black border around the box */
+  padding: 10px; /* add some padding inside the box */
+}
+.update-section {
+  border: 1px solid #000; /* add a black border around the box */
+  padding: 10px; /* add some padding inside the box */
+}
+.boolean-columns {
+  border: 1px solid #000; /* add a black border around the box */
+  padding: 10px; /* add some padding inside the box */
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="modal-wrapper">
+  <div class="modal-content">
+    <h2>Confirm Update</h2>
+    <p>Please confirm the following changes:</p>
+    {% for column_name, old_value, new_value in changes %}
+      <p>- {{ column_name }} changed from "{{ old_value }}" to "{{ new_value }}"</p>
+    {% endfor %}
+    <div class="button-wrapper">
+      <form action="/update" method="post">
+        {% for column_name, old_value, new_value in changes %}
+          <input type="hidden" name="{{ column_name }}" value="{{ new_value }}">
+        {% endfor %}
+        <button type="submit">Confirm Update</button>
+      </form>
+      <button class="cancel-button" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function closeModal() {
+  const modalWrapper = document.querySelector('.modal-wrapper');
+  modalWrapper.style.display = 'none';
+}
+</script>
+{% endblock %}

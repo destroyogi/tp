@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="800">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        select {
+            width: 190px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="datetime-local"] {
+            width: 210px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    {% for dropdown1, dropdown2, result in results %}
+        <h1><u>Agiboo Deployment for {{ dropdown1 }} and {{ dropdown2 }}:</u></h1>
+        {% if result %}
+            <div class="non-boolean-columns">
+                <h2>Current Site Details:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            {% for column_name in non_boolean_columns %}
+                                <th>{{ column_name }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for column_name in non_boolean_columns %}
+                                <td>{{ result.row[column_name] }}</td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="boolean-columns">
+                <h2>Active Plugins:</h2>
+                {% for column_name in boolean_columns %}
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="{{ column_name }}" name="{{ column_name }}" {% if result.row[column_name] %}checked{% endif %} disabled>
+                        <label for="{{ column_name }}">{{ column_name }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="update-section">
+                <h2>Update Site Details:</h2>
+                <form action="/update" method="post">
+                    {% for column_name in columns_list %}
+                        {% if column_name == 'DateofUpgrade' %}
+                            <label for="{{ column_name }}">{{ column_name if column_name != 'DateofUpgrade' else 'Date of Upgrade (CET)' }}:</label>
+                            <input type="datetime-local" id="{{ column_name }}_datetime" name="{{ column_name }}" required><br>
+                        {% elif column_name in ['Agiblockversion', 'Pluginversion'] %}
+                            <label for="{{ column_name }}">{{ column_name }}:</label>
+                            <select id="{{ column_name }}_select" name="{{ column_name }}">
+                                {% for version in versions[column_name] %}
+                                    <option value="{{ version }}">{{ version }}</option>
+                                {% endfor %}
+                            </select><br>
+                        {% endif %}
+                    {% endfor %}
+                    {# Plugins section removed from Update Site Details #}
+                    <input type="submit" value="Update">
+                </form>
+                <div class="gif-wrapper">
+                    <img src="{{ url_for('static', filename='update.gif') }}" alt="Update gif">
+                </div>
+            </div>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
